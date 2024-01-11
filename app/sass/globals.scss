@@ -123,3 +123,32 @@ body{
         background-color: $gray;
     }
 }
+
+.text-black{
+    color: $black
+}
+
+.sign-in{
+    height: 671px;
+    @include align-center
+}
+
+.sign-in-content{
+    @include align-center
+}
+
+.link{
+    text-decoration: none;
+    font-weight: bold;
+    color: $light-blue;
+    cursor: pointer;
+}
+
+.header-account{
+    width: 205px;
+    @include flex-between
+}
+
+.text-white{
+    color: white;
+}

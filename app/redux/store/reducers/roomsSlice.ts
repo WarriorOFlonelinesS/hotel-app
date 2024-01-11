@@ -1,4 +1,3 @@
-import exp from "constants";
 import { IRooms } from "../../../module";
 import { createAction, createSlice } from "@reduxjs/toolkit";
 import { put } from "redux-saga/effects";

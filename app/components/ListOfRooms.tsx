@@ -3,7 +3,7 @@ export const ListOfRooms = ({ rooms }: any) => {
       <>
         {rooms.length > 0 &&
           rooms.map((room: any) => (
-            <tr className="table-tr table-tr_light" key={room.docId}>
+            <tr className="table-tr table-tr_light">
               <td className="table__item">{room.number}</td>
               <td className="table__item">{room.type}</td>
               <td className="table__item">{room.occupancy}</td>

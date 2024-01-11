@@ -47,7 +47,7 @@ export const Main = () => {
                             <th className="table__header table__header_left">Guest</th>
                             <th className="table__header"></th>
                         </tr>
-                        <ListOfRooms rooms={currentRoom} />
+                        <ListOfRooms rooms={currentRoom} key={currentRoom.number}/>
                     </tbody>
                 </table>
                 <div className="main-pagination">

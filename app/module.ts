@@ -1,8 +1,7 @@
 export interface IAccounts {
-    user:{
-        password: string,
-        image: string
-    } 
+    email: string | null,
+    token: string | null,
+    id: string | null;
 }
 
 export interface IRooms{

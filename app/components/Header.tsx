@@ -1,29 +1,48 @@
-import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../hooks"
-import { getAccounts } from "../redux/store/reducers/accountsSlice"
+'use client';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { useRouter } from 'next/navigation';
+import { authenticateUser, removeAccount } from '../redux/store/reducers/accountsSlice';
+import { useEffect } from 'react';
 
 export const Header = () => {
-    const { accounts } = useAppSelector(state => state.accountReducer)
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        dispatch(getAccounts())
-    }
-        , [dispatch])
-    return (
-        accounts.length > 0
-            ?
-            <div className="header">
-                <div className="container">
-                    <div className="header-content">
-                        <img src="./favicon.ico" alt="" className="header__logo" />
-                        <div className="auth-form">
-                            <img src={accounts[0].image} alt="" className="auth-form__logo" />
-                            <button className="btn">Log Out</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            :
-            <p>...Loading</p>
-    )
-}
+  const router = useRouter();
+  const dispatch = useAppDispatch()
+  const { accounts } = useAppSelector((state) => state.accountReducer);
+  const logOut = () => {
+    dispatch(removeAccount())
+  }
+  useEffect(() => {
+    dispatch(authenticateUser());
+  }, []);
+
+  return (
+    <div className="header">
+      <div className="container">
+        <div className="header-content">
+          <img src="./favicon.ico" alt="" className="header__logo" />
+          <div className="p-8">
+            {Object.values(accounts).length === 0 ? (
+              <button
+                className="text-black"
+                onClick={() => router.push('/signin')}
+              >
+                Log in
+              </button>
+
+            ) : (
+              <div className='header-account'>
+                <div className='text-white'>{accounts.email}</div>
+                <button
+                  className="text-black"
+                  onClick={logOut}
+                >
+                  Log Out
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

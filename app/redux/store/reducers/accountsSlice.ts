@@ -1,43 +1,57 @@
-import exp from "constants";
-import { IAccounts } from "../../../module";
 import { createAction, createSlice } from "@reduxjs/toolkit";
-import { put } from "redux-saga/effects";
-import { getAccountsApi } from "../../getAccountsApi";
+import { IAccounts } from "../../../module";
 
 interface AccountsState {
-  accounts: IAccounts[];
-  isLoading: boolean;
+  accounts: IAccounts;
   error?: string;
-  count: number;
-}
-
-export function* getAccountsSaga(): any {
-  const payload = yield getAccountsApi().then((response: any) =>
-    response.map((item: any) => item)
-  );
-  yield put(getAccountsSuccess(payload));
 }
 
 const initialState: AccountsState = {
-  accounts: [],
-  isLoading: false,
+  accounts: {},
   error: "",
-  count: 0,
+
 };
 
 export const accountSlice: any = createSlice({
   name: "account",
   initialState,
   reducers: {
-    getAccountsSuccess: (state, action) => {
-      state.accounts = action.payload;
+    setAccountsSuccess: (state, action) => {
+      state.accounts.email = action.payload.email;
+      state.accounts.token = action.payload.token;
+      state.accounts.id = action.payload.id;
     },
+    setAccountsError: (state, action) => {
+      state.error = action.payload.error;
+    },
+    removeAccount: (state) =>{
+      state.accounts = {}
+      localStorage.removeItem('email') 
+    },
+    authenticateUser:(state)=>{
+      const userEmail = localStorage.getItem('email');
+      if (userEmail) {
+        state.accounts = { email: userEmail };
+      }
+    }
   },
 });
 
-export const GET_ACCOUNTS = "account/GetAccounts";
-export const getAccounts = createAction(GET_ACCOUNTS);
+export const SIGN_UP_ACCOUNT = "account/signUpAccount";
+export const signUpAccount = createAction(SIGN_UP_ACCOUNT, (payload) => {
+  return {
+    payload,
+  };
+});
 
-export const { getAccountsSuccess } = accountSlice.actions;
+export const SIGN_IN_ACCOUNT = "account/signInAccount";
+export const signInAccount = createAction(SIGN_IN_ACCOUNT, (payload) => {
+  return {
+    payload,
+  };
+});
+
+
+export const { setAccountsSuccess, setAccountsError, removeAccount, authenticateUser } = accountSlice.actions;
 
 export default accountSlice.reducer;
