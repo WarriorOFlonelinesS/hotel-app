@@ -18,8 +18,9 @@ export const accountSlice: any = createSlice({
   reducers: {
     setAccountsSuccess: (state, action) => {
       state.accounts.email = action.payload.email;
-      state.accounts.token = action.payload.token;
-      state.accounts.id = action.payload.id;
+      state.accounts.token = action.payload.stsTokenManager
+      .token;
+      state.accounts.id = action.payload.uid;
     },
     setAccountsError: (state, action) => {
       state.error = action.payload.error;

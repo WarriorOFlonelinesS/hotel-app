@@ -23,7 +23,7 @@ export const Header = () => {
           <div className="p-8">
             {Object.values(accounts).length === 0 ? (
               <button
-                className="text-black"
+                className="header__btn"
                 onClick={() => router.push('/signin')}
               >
                 Log in
@@ -33,7 +33,7 @@ export const Header = () => {
               <div className='header-account'>
                 <div className='text-white'>{accounts.email}</div>
                 <button
-                  className="text-black"
+                  className="header__btn"
                   onClick={logOut}
                 >
                   Log Out

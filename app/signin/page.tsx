@@ -11,9 +11,9 @@ const SignIn = () => {
   const dispatch = useAppDispatch()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
+  const [remember, setRemember] = useState(true);
   const router = useRouter()
-
+console.log(remember)
   const signIn = async () => {
     dispatch(signInAccount({
       email: email,
@@ -62,7 +62,8 @@ const SignIn = () => {
             valuePropName="checked"
             wrapperCol={{ offset: 1, span: 16 }}
           >
-            <Checkbox onChange={(e)=>setRemember(e.target.checked)}>Remember me</Checkbox>
+            <Checkbox onClick={()=>setRemember(!remember)}>Remember me</Checkbox>
+            
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 10, span: 16 }}>

@@ -1,22 +1,26 @@
-import {  signInWithEmailAndPassword } from "@firebase/auth";
+import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../firebase";
 import { rememberUser } from "./rememberUser";
 
 type Action = {
-  email: string,
-  password: string,
-  remember:boolean
-}
+  email: string;
+  password: string;
+  remember: boolean;
+};
 
-export const signInAccountApi = async (action: { payload: Action; }) => {
-  const {email, password, remember} = action.payload
-  if(remember){
-    rememberUser(action.payload.email)
-  }
+export const signInAccountApi = async (action: { payload: Action }) => {
+
   try {
-    signInWithEmailAndPassword(auth, email, password)
-
-  } catch {
-    console.log("Error");
+    const { email, password, remember } = action.payload;
+    const result = await signInWithEmailAndPassword(auth, email, password).then(
+      ({ user }) => user
+    );
+    console.log(remember)
+    if (remember) {
+      rememberUser(email);
+    }
+    return result;
+  } catch (error) {
+    return error;
   }
 };

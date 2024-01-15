@@ -2,6 +2,7 @@ import './sass/globals.scss'
 import { ReduxProvider } from './providers/provider'
 import type { Metadata } from 'next'
 import SessionProvider from './providers/SessionProvider'
+import { Header } from './components/Header'
 
 export const metadata: Metadata = {
   title: 'Hotel',
@@ -21,11 +22,12 @@ export default function RootLayout({
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <SessionProvider>
+      <body>
         <ReduxProvider>
-          <body>{children}</body>
+          <Header />
+          {children}
         </ReduxProvider>
-      </SessionProvider>
+      </body>
     </html>
   )
 }

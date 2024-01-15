@@ -11,7 +11,7 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
-  const [remember, setRemember] = useState(false);
+  const [remember, setRemember] = useState(true);
   const router = useRouter()
   const signup = () => {
     dispatch(signUpAccount({
@@ -67,7 +67,7 @@ export default function Signup() {
             valuePropName="checked"
             wrapperCol={{ offset: 1, span: 16 }}
           >
-                        <Checkbox onChange={(e)=>setRemember(e.target.checked)}>Remember me</Checkbox>
+            <Checkbox  onClick={()=>setRemember(!remember)}>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
