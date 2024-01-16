@@ -1,27 +1,24 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ItemRoom from "./ItemRoom";
 
-export const ListOfRooms = ({ rooms, roomId }) => {
+export const ListOfRooms = ({ rooms, roomId, freeRooms }) => {
   const router = useRouter()
   return (
     <>
-      {rooms.length > 0 &&
+      {
+      rooms.length > 0 
+      && 
+     ((freeRooms) ?
+          rooms.filter(freeRoom => freeRoom.guest === '').map((room: any, id: number) => (
+          <ItemRoom room={room} roomId={roomId} id={id} />
+        )) 
+        : 
         rooms.map((room: any, id: number) => (
-          <tr className="table-tr table-tr_light">
-            <td className="table__item">{room.number}</td>
-            <td className="table__item">{room.type}</td>
-            <td className="table__item">{room.occupancy}</td>
-            <td className="table__item table__item_center">{room.price + '$'}</td>
-            <td className="table__item table__item_left">{room.guest}</td>
-            <td className="table__item table__item_right">
-              <Link className="item__link" href={`/components/rooms/${roomId[id]}`}>
-                <button className="btn btn_item">
-                  More information
-                </button>
-              </Link>
-            </td>
-          </tr>
-        ))}
+          <ItemRoom room={room} roomId={roomId} id={id} />
+        )))
+    }
     </>
   );
 };
+ 

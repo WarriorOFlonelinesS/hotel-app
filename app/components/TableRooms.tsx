@@ -16,6 +16,7 @@ export default function TableRooms({rooms}){
         rooms={rooms.rooms} 
         roomId = {rooms.roomId}
         key={rooms.roomId}
+        freeRooms={rooms.freeRooms}
         />
     </tbody>
 </table>

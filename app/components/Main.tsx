@@ -1,5 +1,5 @@
 
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useCallback, useState } from "react";
 import { useAppSelector } from "../hooks";
 import { Pagination } from "./Pagination";
 import { useGetRooms } from "../hooks/useGetRooms";
@@ -7,11 +7,14 @@ import TableRooms from "./TableRooms";
 
 export const Main = () => {
 
+    const [freeRooms, setFreeRooms] = useState(false)
     const { rooms } = useAppSelector(state => state.roomsReducer)
     const [currentPage, setCurrentPage] = useState(1);
     const [roomsPerPage] = useState(10)
     const paginate = (pageNumber: SetStateAction<number>): void => setCurrentPage(pageNumber);
-    ;
+    const handler = useCallback(() => {
+        setFreeRooms(!freeRooms);
+    }, []);
     const lastRoomIndex = currentPage * roomsPerPage;
     const firstRoomIndex = lastRoomIndex - roomsPerPage;
 
@@ -30,14 +33,15 @@ export const Main = () => {
     useGetRooms();
     const tableParams = {
         rooms: currentRooms,
-        roomId: roomsId
+        roomId: roomsId,
+        freeRooms: freeRooms
     }
     return (
         <div className="main">
             <div className="container">
                 <div className="main-filter">
-                    <button className="btn btn_item">Clear all filters</button>
-                    <input type="checkbox" />
+                    <button className="btn btn_item" onClick={() => setFreeRooms(false)}>Clear all filters</button>
+                    <input type="checkbox" checked={freeRooms} onChange={handler} />
                     <label htmlFor="check1" >Free rooms only</label>
                 </div>
                 <TableRooms rooms={tableParams} />
