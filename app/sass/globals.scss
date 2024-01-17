@@ -92,11 +92,13 @@ body {
 
 .btn_item {
   background-color: $light-blue;
+  color: white;
+  border: none;
   cursor: pointer;
   font-weight: bold;
   margin: 21px;
   width: 177px;
-  height: 40px;
+  height: 50px;
   &:hover {
     background-color: $dark-blue;
   }
@@ -251,4 +253,76 @@ li {
 
 .room__description{
     font-size: 20px;
+}
+
+/* Стилі для модального вікна */
+.modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Півпрозорий чорний фон */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  position: absolute;
+  top: -271px;
+  left: 785px;
+  font-size: 25px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.css-dev-only-do-not-override-p7e5j5{
+  font-size: 24px; 
+}
+
+.close:hover {
+  color: black;
+}
+
+/* Класи для відображення або приховання модального вікна */
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+.check-in__header{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgb(219, 219, 219);
+  height: 70px;
+}
+
+.check-in{
+  padding: 10px;
+}
+
+.check-in__btn_cancel{
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  font-size: 25px;
+  border: 1px solid #afb4b9;
+}
+
+.check-in-buttons{
+  display: flex;
+  justify-content: end;
 }

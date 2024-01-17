@@ -3,6 +3,12 @@ import Image from "next/image";
 // import Home from "../../../../public/Home.svg"
 import { useRouter } from "next/navigation";
 import { useGetRoomDetails } from "../../../hooks/useGetRoomDetails";
+import { Modal } from "../../Modal";
+import { useState } from "react";
+import { CheckOut } from "../../CheckOut";
+import { CheckIn } from "../../СheckIn";
+import { DatePicker } from "antd";
+
 
 type Props = {
     params: {
@@ -12,6 +18,23 @@ type Props = {
 
 export default function RoomPage({ params: { id } }: Props) {
     const router = useRouter();
+    const [data, setData] =useState<React.ReactNode | null>(null)
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const openCheckIn = () => {
+      setModalVisible(true);
+      setData(<CheckIn />)
+    };
+
+    const openCheckOut = () =>{
+        setModalVisible(true);
+        setData(<CheckOut />)
+    }
+  
+    const closeModal = () => {
+      setModalVisible(false);
+   
+    };
 
     const roomData = (useGetRoomDetails().find(room => room.docId === id))
     return (
@@ -19,6 +42,7 @@ export default function RoomPage({ params: { id } }: Props) {
         &&
         <div className="room">
             <div className="container">
+
                 <button onClick={() => router.push('/')} className="link__btn">
                     <span className="link__img">&lt;</span> Back Home
                 </button>
@@ -37,8 +61,9 @@ export default function RoomPage({ params: { id } }: Props) {
                     </div>
                     <div className="room-right">
                         <div className="room-buttons">
-                            <button className="btn btn_check-in">Check in</button>
-                            <button className="btn btn_check-out">Check out</button>
+                            <button className="btn btn_check-in" onClick={openCheckIn}>Check in</button>
+                            <button className="btn btn_check-out" onClick={openCheckOut}>Check out</button>
+                            <Modal showModal={modalVisible} children={data} closeModal={closeModal} />
                         </div>
                         <ul className="room-features">
                             <p className="features__header">Features:</p>

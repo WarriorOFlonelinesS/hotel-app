@@ -4,6 +4,7 @@ import { useAppSelector } from "../hooks";
 import { Pagination } from "./Pagination";
 import { useGetRooms } from "../hooks/useGetRooms";
 import TableRooms from "./TableRooms";
+import { DatePicker } from "antd";
 
 export const Main = () => {
 

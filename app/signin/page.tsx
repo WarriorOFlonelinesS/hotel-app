@@ -71,7 +71,7 @@ console.log(remember)
               Submit
             </Button>
           </Form.Item>
-          if you don't have an account <span onClick={()=>{router.push('/signup')}}>Sign up</span>
+          if you don't have an account <span className='link' onClick={()=>{router.push('/signup')}}>Sign up</span>
         </Form>
       </div>
     </div>

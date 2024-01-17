@@ -11,6 +11,7 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
+  console.log(passwordAgain)
   const [remember, setRemember] = useState(true);
   const router = useRouter()
   const signup = () => {
@@ -55,7 +56,7 @@ export default function Signup() {
 
           <Form.Item<FieldType>
             label="Password again"
-            name="password"
+            name="passwordAgain"
             rules={[{ required: true, message: 'Please input your password again!' }]}
           >
             <Input.Password onChange={(e) => { setPasswordAgain(e.target.value) }} />
