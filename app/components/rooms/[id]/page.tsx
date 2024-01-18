@@ -23,7 +23,7 @@ export default function RoomPage({ params: { id } }: Props) {
 
     const openCheckIn = () => {
       setModalVisible(true);
-      setData(<CheckIn />)
+      setData(<CheckIn roomId={id} />)
     };
 
     const openCheckOut = () =>{
@@ -63,7 +63,7 @@ export default function RoomPage({ params: { id } }: Props) {
                         <div className="room-buttons">
                             <button className="btn btn_check-in" onClick={openCheckIn}>Check in</button>
                             <button className="btn btn_check-out" onClick={openCheckOut}>Check out</button>
-                            <Modal showModal={modalVisible} children={data} closeModal={closeModal} />
+                            <Modal showModal={modalVisible} children={data} closeModal={closeModal}/>
                         </div>
                         <ul className="room-features">
                             <p className="features__header">Features:</p>

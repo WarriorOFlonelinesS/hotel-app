@@ -255,7 +255,7 @@ li {
     font-size: 20px;
 }
 
-/* Стилі для модального вікна */
+
 .modal {
   display: none; 
   position: fixed;
@@ -263,7 +263,7 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Півпрозорий чорний фон */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -286,15 +286,10 @@ li {
   cursor: pointer;
 }
 
-.css-dev-only-do-not-override-p7e5j5{
-  font-size: 24px; 
-}
-
 .close:hover {
   color: black;
 }
 
-/* Класи для відображення або приховання модального вікна */
 .show {
   display: block;
 }
@@ -325,4 +320,11 @@ li {
 .check-in-buttons{
   display: flex;
   justify-content: end;
+}
+
+.ant-picker-dropdown{
+z-index: 10000;
+left: 314px !important;
+top: 138px !important;
+font-size: 20px;
 }
