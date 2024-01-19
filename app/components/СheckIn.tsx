@@ -2,29 +2,38 @@ import { DatePicker, DatePickerProps, Input } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 import { useState } from "react";
 import { db } from "@/firebase";
+import { number } from "prop-types";
 
-export const CheckIn = ({ roomId }) => {
-    const [date, setDate] = useState('');
+export const CheckIn = ({ roomId, room }) => {
+    const [checkOutDate, setCheckOutDate] = useState('');
     const [name, setName] = useState('');
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-        console.log(dateString)
+        setCheckOutDate(dateString)
     };
 
 
-    const sendName = async (roomId) => {
-        const id = roomId.roomId;
-        const roomRef = db.ref(`room/${id}`);
+    const sendData = async (roomId) => {
+        const roomDetails = room[roomId]
+        db.collection('room').doc(roomId).update(
+            {
+                [roomId]: {
+                    number: roomDetails.number,
+                    type: roomDetails.type,
+                    occupancy: roomDetails.occupancy,
+                    isCheckedIn: true,
+                    checkInDate: roomDetails.checkInDate,
+                    price: roomDetails.price,
+                    guest: name,
+                    features: roomDetails.features,
+                    gallery: roomDetails.gallery,
+                    description: roomDetails.description,
+                    checkOutDate: checkOutDate
+                }
+            }
+        )
 
-        roomRef.update({
-            guest: 'Новий гість',
-            isCheckedIn: true
-        })
-        .then(() => {
-            console.log('Дані успішно оновлені.');
-        })
-        .catch((error: string) => {
-            console.error('Помилка при оновленні даних:', error);
-        });
+
+
     };
 
     return (
@@ -45,7 +54,7 @@ export const CheckIn = ({ roomId }) => {
                 <button className="btn_item check-in__btn_cancel">
                     Cancel
                 </button>
-                <button className="btn_item check-in__btn_check-in" onClick={() => sendName(roomId)}>
+                <button className="btn_item check-in__btn_check-in" onClick={() => { sendData(roomId) }}>
                     Check in
                 </button>
             </div>

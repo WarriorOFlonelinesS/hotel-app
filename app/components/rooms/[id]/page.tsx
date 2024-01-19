@@ -21,9 +21,10 @@ export default function RoomPage({ params: { id } }: Props) {
     const [data, setData] =useState<React.ReactNode | null>(null)
     const [modalVisible, setModalVisible] = useState(false);
 
+    const roomData = (useGetRoomDetails().find(room => room.docId === id))
     const openCheckIn = () => {
       setModalVisible(true);
-      setData(<CheckIn roomId={id} />)
+    setData(<CheckIn roomId={id} room={roomData}/>)
     };
 
     const openCheckOut = () =>{
@@ -36,7 +37,6 @@ export default function RoomPage({ params: { id } }: Props) {
    
     };
 
-    const roomData = (useGetRoomDetails().find(room => room.docId === id))
     return (
         roomData
         &&
@@ -53,7 +53,7 @@ export default function RoomPage({ params: { id } }: Props) {
                             <h1 className="characteristics__header">Room {roomData[id].number}</h1>
                             <ul className="characteristics-list">
                                 <li><strong>Type:</strong> {roomData[id].type}</li>
-                                <li><strong>Ocupancy:</strong> {roomData[id].type}</li>
+                                <li><strong>Occupancy:</strong> {roomData[id].occupancy}</li>
                                 <li><strong>Price:</strong> {roomData[id].price}</li>
                                 <li><strong>Guest:</strong> {roomData[id].guest}</li>
                             </ul>
