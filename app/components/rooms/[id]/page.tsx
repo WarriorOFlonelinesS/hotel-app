@@ -24,12 +24,12 @@ export default function RoomPage({ params: { id } }: Props) {
     const roomData = (useGetRoomDetails().find(room => room.docId === id))
     const openCheckIn = () => {
       setModalVisible(true);
-    setData(<CheckIn roomId={id} room={roomData}/>)
+    setData(<CheckIn roomId={id} room={roomData} closeModal={setModalVisible}/>)
     };
 
     const openCheckOut = () =>{
         setModalVisible(true);
-        setData(<CheckOut />)
+        setData(<CheckOut roomId={id} room={roomData} closeModal={setModalVisible}/>)
     }
   
     const closeModal = () => {
@@ -69,7 +69,7 @@ export default function RoomPage({ params: { id } }: Props) {
                             <p className="features__header">Features:</p>
                             {roomData[id].features.map(feature => {
                                 return (
-                                    <li>{feature}</li>
+                                    <li className="features-item">{feature}</li>
                                 )
                             })}
                         </ul>

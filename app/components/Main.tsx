@@ -5,13 +5,12 @@ import { Pagination } from "./Pagination";
 import { useGetRooms } from "../hooks/useGetRooms";
 import TableRooms from "./TableRooms";
 
-
 export const Main = () => {
-
     const [freeRooms, setFreeRooms] = useState(false)
     const { rooms } = useAppSelector(state => state.roomsReducer)
     const [currentPage, setCurrentPage] = useState(1);
-    const [roomsPerPage] = useState(10)
+    const [roomsPerPage] = useState(10);
+
     const paginate = (pageNumber: SetStateAction<number>): void => setCurrentPage(pageNumber);
     const handler = useCallback(() => {
         setFreeRooms(!freeRooms);
@@ -21,10 +20,11 @@ export const Main = () => {
 
     const sortedRooms = rooms.map((room: { [x: string]: any; docId: string | number }) => room[room.docId]).sort((a: { number: number }, b: { number: number }) => a.number - b.number);
     const currentRooms = sortedRooms.slice(firstRoomIndex, lastRoomIndex);
-    const roomsId = rooms.map((room: { [x: string]: any; docId: string | number }) => room.docId).sort((a, b) => rooms.find(room => room.docId === a)[a].number - rooms.find(room => room.docId === b)[b].number).slice(firstRoomIndex, lastRoomIndex);;
+    const roomsId = rooms.map((room: { [x: string]: any; docId: string | number }) => room.docId).sort((a: number, b: number) => rooms.find((room: any) => room.docId === a)[a].number - rooms.find((room: any) => room.docId === b)[b].number).slice(firstRoomIndex, lastRoomIndex);;
 
     const nextPage = () => {
         setCurrentPage((prev) => (prev === Math.ceil(rooms.length / roomsPerPage) ? 1 : prev + 1));
+
     };
 
     const prevPage = () => {

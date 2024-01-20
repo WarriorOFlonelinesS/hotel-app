@@ -130,6 +130,7 @@ body {
   background-color: $dark-blue;
   border: none;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .sign-in {
@@ -171,8 +172,8 @@ body {
   cursor: pointer;
 }
 
-.characteristics__header{
-    text-decoration-line: underline;
+.characteristics__header {
+  text-decoration-line: underline;
 }
 
 .room-sides {
@@ -192,10 +193,17 @@ body {
   text-decoration: none;
 }
 
-li {
+.features-item {
   margin-bottom: 10px;
   font-size: 24px;
+  list-style-type: none;
 }
+
+
+.features-item::before {
+  content: url('../../public/done.svg'); 
+  margin-right: 10px;
+ }
 
 .room-right {
   width: 847px;
@@ -251,13 +259,12 @@ li {
   font-weight: bold;
 }
 
-.room__description{
-    font-size: 20px;
+.room__description {
+  font-size: 20px;
 }
 
-
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -297,7 +304,7 @@ li {
 .hide {
   display: none;
 }
-.check-in__header{
+.check-in__header {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 48px;
@@ -305,11 +312,11 @@ li {
   height: 70px;
 }
 
-.check-in{
+.check-in {
   padding: 10px;
 }
 
-.check-in__btn_cancel{
+.check-in__btn_cancel {
   background-color: transparent;
   color: black;
   cursor: pointer;
@@ -317,14 +324,32 @@ li {
   border: 1px solid #afb4b9;
 }
 
-.check-in-buttons{
+.check-in-buttons {
   display: flex;
   justify-content: end;
+  border-top: 1px solid  rgb(219, 219, 219);
 }
 
-.ant-picker-dropdown{
-z-index: 10000;
-left: 314px !important;
-top: 138px !important;
-font-size: 20px;
+.ant-picker-dropdown {
+  z-index: 10000;
+  left: 314px !important;
+  top: 138px !important;
+  font-size: 20px;
+}
+
+.input__guest{
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.input__date{
+  margin-bottom: 50px;
+}
+
+.input__date input{
+  font-size: 20px !important;
+}
+
+.check-out__text{
+  margin-bottom: 50px;
 }
