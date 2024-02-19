@@ -11,10 +11,11 @@ type Action ={
 
 export function* signInAccountsSaga(action:Action) {
     try {
+      // @ts-ignore
       const payload = yield signInAccountApi(action);
        yield put(setAccountsSuccess(payload))
     } catch (error) {
-      yield put(setAccountsError(error.message));
+      yield put(setAccountsError({error: String(error)}));
     }
   }
 

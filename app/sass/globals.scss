@@ -133,6 +133,12 @@ body {
   font-size: 20px;
 }
 
+.header__logo {
+  max-width: 37px;
+  max-height: 32px;
+  display: block;
+}
+
 .sign-in {
   height: 671px;
   @include align-center;
@@ -199,11 +205,10 @@ body {
   list-style-type: none;
 }
 
-
 .features-item::before {
-  content: url('../../public/done.svg'); 
+  content: url("../../public/done.svg");
   margin-right: 10px;
- }
+}
 
 .room-right {
   width: 847px;
@@ -316,6 +321,10 @@ body {
   padding: 10px;
 }
 
+.check-in__btn_check-in{
+  font-size: 24px;
+}
+
 .check-in__btn_cancel {
   background-color: transparent;
   color: black;
@@ -327,7 +336,7 @@ body {
 .check-in-buttons {
   display: flex;
   justify-content: end;
-  border-top: 1px solid  rgb(219, 219, 219);
+  border-top: 1px solid rgb(219, 219, 219);
 }
 
 .ant-picker-dropdown {
@@ -337,19 +346,19 @@ body {
   font-size: 20px;
 }
 
-.input__guest{
+.input__guest {
   font-size: 20px;
   margin-bottom: 50px;
 }
 
-.input__date{
+.input__date {
   margin-bottom: 50px;
 }
 
-.input__date input{
+.input__date input {
   font-size: 20px !important;
 }
 
-.check-out__text{
+.check-out__text {
   margin-bottom: 50px;
 }

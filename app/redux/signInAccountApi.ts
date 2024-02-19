@@ -9,13 +9,12 @@ type Action = {
 };
 
 export const signInAccountApi = async (action: { payload: Action }) => {
-
   try {
     const { email, password, remember } = action.payload;
     const result = await signInWithEmailAndPassword(auth, email, password).then(
       ({ user }) => user
     );
-    console.log(remember)
+    console.log(remember);
     if (remember) {
       rememberUser(email);
     }

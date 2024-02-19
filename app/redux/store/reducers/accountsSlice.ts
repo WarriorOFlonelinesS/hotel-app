@@ -1,58 +1,66 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IAccounts } from "../../../module";
 
 interface AccountsState {
   accounts: IAccounts;
+  isLoading: boolean;
   error?: string;
 }
 
 const initialState: AccountsState = {
-  accounts: {},
+  accounts: {
+    email: null,
+  },
+  isLoading: false,
   error: "",
-
 };
 
-export const accountSlice: any = createSlice({
+type TPayload = {
+  email: string;
+  password: string;
+  remember: boolean;
+};
+
+export const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    setAccountsSuccess: (state, action) => {
-      state.accounts.email = action.payload.email;
-      state.accounts.token = action.payload.stsTokenManager
-      .token;
-      state.accounts.id = action.payload.uid;
+    getSignInAccountsRequest: (state, action: PayloadAction<TPayload>) => {
+      state.isLoading = true;
     },
-    setAccountsError: (state, action) => {
+    getSignUpAccountsRequest: (state, action: PayloadAction<TPayload>) => {
+      state.isLoading = true;
+    },
+    setAccountsSuccess: (state, action: PayloadAction<{ email: string }>) => {
+      state.accounts.email = action.payload.email;
+    },
+    setAccountsError: (state, action: PayloadAction<{ error: string }>) => {
       state.error = action.payload.error;
     },
-    removeAccount: (state) =>{
-      state.accounts = {}
-      localStorage.removeItem('email') 
+    removeAccount: (state) => {
+      state.accounts = {
+        email: null,
+      };
+      localStorage.removeItem("email");
     },
-    authenticateUser:(state)=>{
-      const userEmail = localStorage.getItem('email');
+    authenticateUser: (state) => {
+      const userEmail = localStorage.getItem("email");
       if (userEmail) {
-        state.accounts = { email: userEmail };
+        state.accounts = {
+          email: userEmail,
+        };
       }
-    }
+    },
   },
 });
 
-export const SIGN_UP_ACCOUNT = "account/signUpAccount";
-export const signUpAccount = createAction(SIGN_UP_ACCOUNT, (payload) => {
-  return {
-    payload,
-  };
-});
-
-export const SIGN_IN_ACCOUNT = "account/signInAccount";
-export const signInAccount = createAction(SIGN_IN_ACCOUNT, (payload) => {
-  return {
-    payload,
-  };
-});
-
-
-export const { setAccountsSuccess, setAccountsError, removeAccount, authenticateUser } = accountSlice.actions;
+export const {
+  setAccountsSuccess,
+  setAccountsError,
+  removeAccount,
+  authenticateUser,
+  getSignInAccountsRequest, // Corrected action creator name
+  getSignUpAccountsRequest, // Corrected action creator name
+} = accountSlice.actions;
 
 export default accountSlice.reducer;

@@ -1,6 +1,7 @@
 import Link from "next/link"
+import { TItemRoom} from "./types"
 
-export default function ItemRoom({room, roomId, id}){
+export default function ItemRoom({room, roomId, id}:TItemRoom){
     return(
         <tr className="table-tr table-tr_light">
         <td className="table__item">{room.number}</td>

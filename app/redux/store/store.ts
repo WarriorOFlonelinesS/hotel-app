@@ -1,23 +1,18 @@
 import createSagaMiddleware from "redux-saga";
-import { takeEvery } from "redux-saga/effects";
+import { all, takeEvery, takeLatest } from "redux-saga/effects";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import accountReducer, { SIGN_IN_ACCOUNT } from "./reducers/accountsSlice";
+import accountReducer, { getSignInAccountsRequest, getSignUpAccountsRequest } from '../store/reducers/accountsSlice'
 import roomsReducer from "./reducers/roomsSlice";
-import { SIGN_UP_ACCOUNT } from "./reducers/accountsSlice";
 import { GET_ROOMS, getRoomsSaga } from "./reducers/roomsSlice";
 import { signUpAccountsSaga } from "./reducers/sagas/signUpAccountsSaga";
 import { signInAccountsSaga } from "./reducers/sagas/signInAccountsSaga";
+import { rootSaga } from "./rootSaga";
 
 const rootReducer = combineReducers({
   accountReducer,
   roomsReducer,
 });
 
-function* sagas() {
-  yield takeEvery(SIGN_UP_ACCOUNT, signUpAccountsSaga);
-  yield takeEvery(SIGN_IN_ACCOUNT, signInAccountsSaga)
-  yield takeEvery(GET_ROOMS, getRoomsSaga);
-}
 
 export const setupStore = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -27,7 +22,7 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware): any =>
       getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
   });
-  sagaMiddleware.run(sagas);
+  sagaMiddleware.run(rootSaga);
 
   return store;
 };

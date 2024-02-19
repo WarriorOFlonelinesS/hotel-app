@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
-import { signInAccount } from '../redux/store/reducers/accountsSlice';
 import { useAppDispatch } from '../hooks';
+import { FieldNamesType } from 'antd/es/cascader';
+import { getSignInAccountsRequest } from '../redux/store/reducers/accountsSlice';
 
 // Define your functional component
 const SignIn = () => {
@@ -15,7 +16,7 @@ const SignIn = () => {
   const router = useRouter()
 console.log(remember)
   const signIn = async () => {
-    dispatch(signInAccount({
+    dispatch(getSignInAccountsRequest({
       email: email,
       password: password,
       remember:remember
@@ -40,7 +41,7 @@ console.log(remember)
           <h4>
             Authentication
           </h4>
-          <Form.Item<FieldType>
+          <Form.Item
             label="Email"
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
@@ -49,7 +50,7 @@ console.log(remember)
             <Input onChange={(e) => { setEmail(e.target.value) }} />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="Password"
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
@@ -57,7 +58,7 @@ console.log(remember)
             <Input.Password onChange={(e) => { setPassword(e.target.value) }} />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             name="remember"
             valuePropName="checked"
             wrapperCol={{ offset: 1, span: 16 }}
@@ -71,7 +72,7 @@ console.log(remember)
               Submit
             </Button>
           </Form.Item>
-          if you don't have an account <span className='link' onClick={()=>{router.push('/signup')}}>Sign up</span>
+          if you do not have an account <span className='link' onClick={()=>{router.push('/signup')}}>Sign up</span>
         </Form>
       </div>
     </div>

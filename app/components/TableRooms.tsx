@@ -1,6 +1,6 @@
 import {ListOfRooms} from '../components/ListOfRooms'
-export default function TableRooms({rooms}){
-
+import { TRoom, TRooms } from './types'
+export default function TableRooms({rooms, roomId, freeRooms}:TRooms){
    return (
     <table className="main-table">
     <tbody>
@@ -13,10 +13,10 @@ export default function TableRooms({rooms}){
             <th className="table__header"></th>
         </tr>
         <ListOfRooms
-        rooms={rooms.rooms} 
-        roomId = {rooms.roomId}
-        key={rooms.roomId}
-        freeRooms={rooms.freeRooms}
+        rooms={rooms} 
+        roomId = {roomId}
+        key={roomId}
+        freeRooms={freeRooms}
         />
     </tbody>
 </table>

@@ -4,6 +4,8 @@ import { useAppSelector } from "../hooks";
 import { Pagination } from "./Pagination";
 import { useGetRooms } from "../hooks/useGetRooms";
 import TableRooms from "./TableRooms";
+import { TDocument } from "./rooms/[id]/page";
+import { TRoom } from "./types";
 
 export const Main = () => {
     const [freeRooms, setFreeRooms] = useState(false)
@@ -20,7 +22,19 @@ export const Main = () => {
 
     const sortedRooms = rooms.map((room: { [x: string]: any; docId: string | number }) => room[room.docId]).sort((a: { number: number }, b: { number: number }) => a.number - b.number);
     const currentRooms = sortedRooms.slice(firstRoomIndex, lastRoomIndex);
-    const roomsId = rooms.map((room: { [x: string]: any; docId: string | number }) => room.docId).sort((a: number, b: number) => rooms.find((room: any) => room.docId === a)[a].number - rooms.find((room: any) => room.docId === b)[b].number).slice(firstRoomIndex, lastRoomIndex);;
+    const roomsId = rooms
+        .filter((room:TRoom) => room.docId !== null)
+        .map((room:TDocument) => room.docId as string)
+        .sort((a:number, b:number) => {
+            const roomA = rooms.find((room:TRoom) => room.docId === a);
+            const roomB = rooms.find((room:TRoom) => room.docId === b);
+            if (roomA && roomB) {
+                return roomA.number - roomB.number;
+            }
+            return 0;
+        })
+        .slice(firstRoomIndex, lastRoomIndex);
+
 
     const nextPage = () => {
         setCurrentPage((prev) => (prev === Math.ceil(rooms.length / roomsPerPage) ? 1 : prev + 1));
@@ -45,7 +59,7 @@ export const Main = () => {
                     <input type="checkbox" checked={freeRooms} onChange={handler} />
                     <label htmlFor="check1" >Free rooms only</label>
                 </div>
-                <TableRooms rooms={tableParams} />
+                <TableRooms {...tableParams} />
                 <div className="main-pagination">
                     <button className="btn btn_pagination" onClick={prevPage}>&lt;</button>
                     <Pagination

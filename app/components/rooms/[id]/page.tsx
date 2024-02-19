@@ -1,14 +1,14 @@
 'use client'
+'@refresh reset'
 import Image from "next/image";
-// import Home from "../../../../public/Home.svg"
+
 import { useRouter } from "next/navigation";
 import { useGetRoomDetails } from "../../../hooks/useGetRoomDetails";
 import { Modal } from "../../Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckOut } from "../../CheckOut";
 import { CheckIn } from "../../СheckIn";
-import { DatePicker } from "antd";
-
+import { TRoom } from "../../types";
 
 type Props = {
     params: {
@@ -16,29 +16,42 @@ type Props = {
     }
 }
 
+export type TDocument = {
+    docId: string | null
+    room: TRoom
+}
+
 export default function RoomPage({ params: { id } }: Props) {
     const router = useRouter();
-    const [data, setData] =useState<React.ReactNode | null>(null)
+    const [data, setData] = useState<React.ReactNode | null>(null)
     const [modalVisible, setModalVisible] = useState(false);
+    const [roomData, setRoomData] = useState({});
 
-    const roomData = (useGetRoomDetails().find(room => room.docId === id))
+    const room = useGetRoomDetails();
+    const roomDetails = room.find((room: TDocument)=> room.docId === id);
+
+    useEffect(() => {
+        if (roomDetails) {
+            setRoomData(roomDetails);
+        }
+    }, [roomDetails]);
+
     const openCheckIn = () => {
-      setModalVisible(true);
-    setData(<CheckIn roomId={id} room={roomData} closeModal={setModalVisible}/>)
+        setModalVisible(true);
+        setData(<CheckIn roomId={id} room={roomData} closeModal={setModalVisible} />)
     };
 
-    const openCheckOut = () =>{
+    const openCheckOut = () => {
         setModalVisible(true);
-        setData(<CheckOut roomId={id} room={roomData} closeModal={setModalVisible}/>)
+        setData(<CheckOut roomId={id} room={roomData} closeModal={setModalVisible} />)
     }
-  
+
     const closeModal = () => {
-      setModalVisible(false);
-   
+        setModalVisible(false);
     };
 
     return (
-        roomData
+        roomDetails
         &&
         <div className="room">
             <div className="container">
@@ -48,14 +61,14 @@ export default function RoomPage({ params: { id } }: Props) {
                 </button>
                 <div className="room-sides">
                     <div className="room-left">
-                        <Image className="room" width={1018} height={561} src={roomData[id].gallery[0]} alt="room" />
+                        <Image className="room" width={1018} height={561} src={roomDetails[id].gallery[0]} alt="room" />
                         <div className="room-characteristics">
-                            <h1 className="characteristics__header">Room {roomData[id].number}</h1>
+                            <h1 className="characteristics__header">Room {roomDetails[id].number}</h1>
                             <ul className="characteristics-list">
-                                <li><strong>Type:</strong> {roomData[id].type}</li>
-                                <li><strong>Occupancy:</strong> {roomData[id].occupancy}</li>
-                                <li><strong>Price:</strong> {roomData[id].price}</li>
-                                <li><strong>Guest:</strong> {roomData[id].guest}</li>
+                                <li><strong>Type:</strong> {roomDetails[id].type}</li>
+                                <li><strong>Occupancy:</strong> {roomDetails[id].occupancy}</li>
+                                <li><strong>Price:</strong> {roomDetails[id].price}</li>
+                                <li><strong>Guest:</strong> {roomDetails[id].guest}</li>
                             </ul>
                         </div>
                     </div>
@@ -63,13 +76,15 @@ export default function RoomPage({ params: { id } }: Props) {
                         <div className="room-buttons">
                             <button className="btn btn_check-in" onClick={openCheckIn}>Check in</button>
                             <button className="btn btn_check-out" onClick={openCheckOut}>Check out</button>
-                            <Modal showModal={modalVisible} children={data} closeModal={closeModal}/>
+                            <Modal showModal={modalVisible}  closeModal={closeModal}>
+                                {data}
+                            </Modal>
                         </div>
                         <ul className="room-features">
                             <p className="features__header">Features:</p>
-                            {roomData[id].features.map(feature => {
+                            {roomDetails[id].features.map((feature:TRoom['features']) => {
                                 return (
-                                    <li className="features-item">{feature}</li>
+                                    <li key={id} className="features-item">{feature}</li>
                                 )
                             })}
                         </ul>
@@ -80,7 +95,7 @@ export default function RoomPage({ params: { id } }: Props) {
                         Desctiption:
                     </div>
                     <div className="room__description">
-                        {roomData[id].description}
+                        {roomDetails[id].description}
                     </div>
                 </div>
             </div>

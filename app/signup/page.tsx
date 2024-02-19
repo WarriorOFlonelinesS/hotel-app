@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../hooks';
-import { signUpAccount } from '../redux/store/reducers/accountsSlice';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { getSignUpAccountsRequest } from '../redux/store/reducers/accountsSlice';
 
 
 export default function Signup() {
@@ -11,11 +11,10 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
-  console.log(passwordAgain)
   const [remember, setRemember] = useState(true);
   const router = useRouter()
   const signup = () => {
-    dispatch(signUpAccount({
+    dispatch(getSignUpAccountsRequest({
       email: email,
       password: password,
       remember:remember
@@ -38,7 +37,7 @@ export default function Signup() {
           <h4>
             Registration
           </h4>
-          <Form.Item<FieldType>
+          <Form.Item
             label="Email"
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
@@ -46,7 +45,7 @@ export default function Signup() {
             <Input onChange={(e) => { setEmail(e.target.value) }} />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="Password"
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
@@ -54,16 +53,14 @@ export default function Signup() {
             <Input.Password onChange={(e) => { setPassword(e.target.value) }} />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="Password again"
             name="passwordAgain"
             rules={[{ required: true, message: 'Please input your password again!' }]}
           >
             <Input.Password onChange={(e) => { setPasswordAgain(e.target.value) }} />
           </Form.Item>
-          
-
-          <Form.Item<FieldType>
+          <Form.Item
             name="remember"
             valuePropName="checked"
             wrapperCol={{ offset: 1, span: 16 }}
