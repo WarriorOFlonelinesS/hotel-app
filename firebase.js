@@ -4,9 +4,9 @@ import 'firebase/compat/firestore';
 import {getAuth} from '@firebase/auth'
 
 const firebaseConfig = {
-  ##############################
-    ADD YOUR CONFIGURATION
-  ##############################
+  // ##############################
+  //   ADD YOUR CONFIGURATION
+  // ##############################
 };
 
 // Initialize Firebase
