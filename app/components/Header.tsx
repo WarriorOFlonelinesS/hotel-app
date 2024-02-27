@@ -16,7 +16,7 @@ export const Header = () => {
   }
   useEffect(() => {
     dispatch(authenticateUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="header">

@@ -5,7 +5,6 @@ import { useAppDispatch } from '../hooks';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { getSignUpAccountsRequest } from '../redux/store/reducers/accountsSlice';
 
-
 export default function Signup() {
   const dispatch = useAppDispatch()
   const [email, setEmail] = useState('');

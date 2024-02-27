@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../hooks';
-import { FieldNamesType } from 'antd/es/cascader';
 import { getSignInAccountsRequest } from '../redux/store/reducers/accountsSlice';
 
 // Define your functional component
@@ -14,7 +13,6 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(true);
   const router = useRouter()
-console.log(remember)
   const signIn = async () => {
     dispatch(getSignInAccountsRequest({
       email: email,

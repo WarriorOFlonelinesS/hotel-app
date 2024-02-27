@@ -1,4 +1,5 @@
-import { db } from "@/firebase";
+import { db } from "../../firebase";
+import React from "react";
 
 export const CheckOut = ({ roomId, room, closeModal }: any) => {
     const sendData = async (roomId: string, ) => {

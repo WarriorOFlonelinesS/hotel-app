@@ -1,7 +1,8 @@
 import { DatePicker, Input, Form } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 import { useState } from "react";
-import { db } from "@/firebase";
+import { db } from "../../firebase";
+import React from "react";
 
 export const CheckIn = ({ roomId, room, closeModal }: any) => {
     const [form] = Form.useForm();

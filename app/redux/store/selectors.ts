@@ -10,5 +10,5 @@ export const getAccounts = createSelector(
 export const getStateRooms = (state: RootState) => state.roomsReducer;
 export const getRooms = createSelector(
     getStateRooms,
-    account => account.accounts
+    room => room.rooms
 );

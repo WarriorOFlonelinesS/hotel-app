@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import ItemRoom from "./ItemRoom";
 import { TRooms } from "./types";
 
