@@ -6,12 +6,13 @@ import { useGetRooms } from "../hooks/useGetRooms";
 import TableRooms from "./TableRooms";
 import { TDocument } from "./rooms/[id]/page";
 import { TRoom } from "./types";
-import { getStateRooms } from "../redux/store/selectors";
+
 import React from "react";
 
 export const Main = () => {
+    const rooms = useGetRooms()
+
     const [freeRooms, setFreeRooms] = useState(false)
-    const { rooms } = useAppSelector(getStateRooms)
     const [currentPage, setCurrentPage] = useState(1);
     const [roomsPerPage] = useState(10);
 
@@ -46,8 +47,7 @@ export const Main = () => {
     const prevPage = () => {
         setCurrentPage((prev) => (prev === 1 ? Math.ceil(rooms.length / roomsPerPage) : prev - 1));
     };
-
-    useGetRooms();
+    
     const tableParams = {
         rooms: currentRooms,
         roomId: roomsId,

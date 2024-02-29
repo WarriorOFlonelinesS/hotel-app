@@ -22,7 +22,7 @@ export const Header = () => {
     <div className="header">
       <div className="container">
         <div className="header-content">
-          <Image src={Logo} alt="Logo" className="header__logo" />
+          <Image src={Logo} alt="Logo" className="header__logo" onClick={() => router.push('/')} />
           <div className="p-8">
             {accounts.email === null ? (
               <button

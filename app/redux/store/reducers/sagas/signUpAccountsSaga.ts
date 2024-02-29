@@ -18,4 +18,3 @@ export function* signUpAccountsSaga(action: Action) {
     yield put(setAccountsError({ error: String(error) })); // Преобразование в строку
   }
 }
-

@@ -5,7 +5,7 @@ import { Header } from './components/Header'
 
 
 export const metadata: Metadata = {
-  title: 'Hotel',
+  title: 'HotelHub',
 }
 
 export default function RootLayout({

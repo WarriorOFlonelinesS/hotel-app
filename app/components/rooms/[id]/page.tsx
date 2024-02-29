@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
-import { useGetRoomDetails } from "../../../hooks/useGetRoomDetails";
 import { Modal } from "../../Modal";
 import { useEffect, useState } from "react";
 import { CheckOut } from "../../CheckOut";
 import { CheckIn } from "../../СheckIn";
 import { TRoom } from "../../types";
+import { useGetRooms } from "@/app/hooks/useGetRooms";
 
 type Props = {
     params: {
@@ -27,8 +27,8 @@ export default function RoomPage({ params: { id } }: Props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [roomData, setRoomData] = useState({});
 
-    const room = useGetRoomDetails();
-    const roomDetails = room.find((room: TDocument)=> room.docId === id);
+    const room = useGetRooms();
+    const roomDetails = room.find((room: TDocument) => room.docId === id);
 
     useEffect(() => {
         if (roomDetails) {
@@ -76,13 +76,13 @@ export default function RoomPage({ params: { id } }: Props) {
                         <div className="room-buttons">
                             <button className="btn btn_check-in" onClick={openCheckIn}>Check in</button>
                             <button className="btn btn_check-out" onClick={openCheckOut}>Check out</button>
-                            <Modal showModal={modalVisible}  closeModal={closeModal}>
+                            <Modal showModal={modalVisible} closeModal={closeModal}>
                                 {data}
                             </Modal>
                         </div>
                         <ul className="room-features">
                             <p className="features__header">Features:</p>
-                            {roomDetails[id].features.map((feature:TRoom['features']) => {
+                            {roomDetails[id].features.map((feature: TRoom['features']) => {
                                 return (
                                     <li key={id} className="features-item">{feature}</li>
                                 )

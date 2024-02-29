@@ -59,8 +59,8 @@ export const {
   setAccountsError,
   removeAccount,
   authenticateUser,
-  getSignInAccountsRequest, // Corrected action creator name
-  getSignUpAccountsRequest, // Corrected action creator name
+  getSignInAccountsRequest,
+  getSignUpAccountsRequest, 
 } = accountSlice.actions;
 
 export default accountSlice.reducer;
