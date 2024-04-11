@@ -83,32 +83,43 @@ HotelHub is designed to make the process of choosing and booking rooms more conv
 
 ## Usage
 <p>
-  For ordering a dish, you need to click on buttons 'Замовити'. Also you can scroll by orange buttons.
+  Before using this app, you should sign up or sign in into your account:
 </p>
 
-<img src = 'https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/26ed6ee2-5e74-42c1-ba6d-4483c01cfa93'>
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/1b8799a4-9776-46ae-a431-91e0d2fba399)
+
 <br>
 
 <p>
-  After ordering, a message will appeare:
+  After that you can view the list of rooms:
 </p>
 
-<div align='center'>
-  <img src='https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/51b78d7a-4ca5-47d5-8c72-dd03957b4307'>
-</div>
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/64d30c77-afcb-4119-8e11-762f0e8038f5)
 
 <p>
-  Next, you should click on an icon of a cart, and you will see this window:
+  If you click on the more information button you will be taken to a room page:
 </p>
 
-<img src="https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/3c64b542-0e8d-4d57-b85d-795215edcc47" alt="cart">
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/bc6fc680-3813-4c36-b56d-214270611333)
 
 <p>
-    When you switched from the cart to window 'Оформлення замовлення' by clicking on appropriate button.
+  If you want to check in, you should click on the button 'Check In' and fill the form:
 </p>
 
-<img src='https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/5384da56-a95f-4071-aa4c-ae7e85c9e74c'>
-'Finally, you need fill a form and click on "Оформити"
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/401a66b3-d1cd-4b07-b285-0d9bd97077df)
+
+<p>
+  To check out of your room, you should click on the button 'Check out':
+</p>
+
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/90839ede-2c18-4bd4-a706-edff642b7b56)
+
+<p>
+  To filter rooms, you need to click on
+</p>
+
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/b43f42ec-7c00-4f8e-b51a-2aca79883d36)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
