@@ -1,9 +1,10 @@
 <a name="readme-top"></a>
 
 <div align='center'>
-  <img src='https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/1d42c2c5-7bd2-4d60-b31a-e68c8fce49a3'>
+  <img src='https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/fab364bf-89a3-475a-88c7-58985a5538c5'>
+
 </div>
-  <h3 align="center">DVA VARENYKY</h3>
+  <h3 align="center">Hotel Hub</h3>
   <p align="center">
     The app for booking rooms 'HotelHub'
     <br />
@@ -34,34 +35,20 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![image](https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/7f021a22-2102-4ac0-a0a3-2fc476315fc2)
+![image](https://github.com/WarriorOFlonelinesS/hotel-app/assets/98014616/ebf9dbad-281a-4806-8307-472b2b44976a)
 
- DVA VARENYKA is your ideal companion in the world of savory and diverse culinary delights! Our app offers a unique experience for lovers of gastronomy and gourmets, providing access to a rich menu and the convenience of placing orders online.
+HotelHub is a mobile application designed to provide convenience and comfort to travelers when choosing and booking hotels. It offers a wide range of features to help you find and book suitable accommodation anywhere in the world. Here are the main features and functions of HotelHub:
 
-Main features of the DVA VARENYKA application:
++ Hotel search:
+  + Users can use the app to search for hotels based on various criteria such as date of stay, number of guests, etc.
++ Filters and sorting:
+  + Users can apply various filters to accurately select a hotel according to their preferences.
++ Photos and descriptions:
+  + Each room is presented with a detailed description, photographs of the rooms so that users can get a complete picture of what each option offers.
++ Reservations:
+  + The application allows you to book hotels directly through your mobile device.
 
-Diverse Menu:
-
-+ A wide variety of dishes to satisfy any taste and preference.
-
-Easy Ordering:
-
-+ A simple and intuitive interface for easy food ordering. 
-+ Ability to customize dishes according to user preferences. 
-+ Option to add items to the cart and edit the order. 
-
-Fast and Secure Delivery:
-
-+ Secure and reliable payment methods.
-+ Choice of self-pickup or convenient delivery to the specified address.
-+ Promotions and Special Offers:
-
-Customer Feedback and Support:
-
-+ Easy access to support service contacts.
-+ Ability to rate dishes and leave reviews. 
-
-DVA VARENYKA aims not only to satisfy your appetite but also to create an unforgettable food ordering experience. Indulge in the flavor of every meal, making orders in our convenient app!
+HotelHub is designed to make the process of choosing and booking rooms more convenient and simple for travelers, providing access to a variety of accommodation options and additional features for a comfortable stay.
 
 ### Built With
 
