@@ -52,11 +52,9 @@ HotelHub is designed to make the process of choosing and booking rooms more conv
 
 ### Built With
 
-* [![JavaScript][JavaScript]][JavaScript-url]
-* [![HTML][HTML]][HTML-url]
-* [![CSS3][CSS3]][CSS3-url]
-* [![PHP][PHP]][PHP-url]
-* [![MYSQL][MYSQL]][MYSQL-url]
+* [![Next.js][Next.js]][Next.js-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
+* [![SASS][SASS]][SASS-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -137,13 +135,9 @@ Ready project: https://dva-varenika.netlify.app/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [product-screenshot]: images/screenshot.png
-[JavaScript]: https://img.shields.io/badge/javascript-20232A?style=for-the-badge&logo=javascript&logoColor=yellow
-[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[HTML]: https://img.shields.io/badge/html5-20232A?style=for-the-badge&logo=html5&logoColor=red
-[HTML-url]: [https://reactjs.org/](https://developer.mozilla.org/ru/docs/Web/HTML)
-[CSS3]: https://img.shields.io/badge/css3-20232A?style=for-the-badge&logo=css3&logoColor=blue
-[CSS3-url]: [https://reactjs.org/](https://developer.mozilla.org/ru/docs/Web/HTML)
-[PHP]: https://img.shields.io/badge/php-20232A?style=for-the-badge&logo=php&logoColor=#777BB4
-[PHP-url]: https://www.php.net/manual/ru/intro-whatis.php
-[MYSQL]: https://img.shields.io/badge/mysql-20232A?style=for-the-badge&logo=mysql&logoColor=#4479A1
-[MYSQL-url]: https://www.mysql.com
+[Next.js]: https://img.shields.io/badge/next.js-20232A?style=for-the-badge&logo=nextdotjs&logoColor=#D81B60
+[Next.js-url]: https://nextjs.org/
+[TypeScript]: https://img.shields.io/badge/typescript-20232A?style=for-the-badge&logo=typescript
+[TypeScript-url]: https://www.typescriptlang.org/
+[SASS]: https://img.shields.io/badge/sass-20232A?style=for-the-badge&logo=sass
+[SASS-url]: https://sass-lang.com/
