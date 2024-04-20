@@ -1,3 +1,5 @@
+import React from "react"
+
 export const Pagination = ({ roomsPerPage, totalRooms, paginate }: any) => {
     const pageNumbers = []
     for (let i = 1; i <= Math.ceil(totalRooms / roomsPerPage); i++) {

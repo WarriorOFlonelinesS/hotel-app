@@ -1,7 +1,8 @@
 import { fork } from "redux-saga/effects";
 import { rsf } from "../../../../../firebase";
-import { TRoom } from "@/app/components/types";
+
 import { getRoomsFailure, getRoomsSuccess } from "../roomsSlice";
+import { TRoom } from "../../../../components/types";
 
 export function* getRoomsSaga() {
   yield fork(rsf.firestore.syncCollection, "room", {

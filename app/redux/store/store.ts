@@ -3,9 +3,6 @@ import { all, takeEvery, takeLatest } from "redux-saga/effects";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import accountReducer, { getSignInAccountsRequest, getSignUpAccountsRequest } from '../store/reducers/accountsSlice'
 import roomsReducer from "./reducers/roomsSlice";
-import { GET_ROOMS, getRoomsSaga } from "./reducers/roomsSlice";
-import { signUpAccountsSaga } from "./reducers/sagas/signUpAccountsSaga";
-import { signInAccountsSaga } from "./reducers/sagas/signInAccountsSaga";
 import { rootSaga } from "./rootSaga";
 
 const rootReducer = combineReducers({

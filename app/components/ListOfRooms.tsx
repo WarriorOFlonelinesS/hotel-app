@@ -1,3 +1,4 @@
+import React from "react";
 import ItemRoom from "./ItemRoom";
 import { TRooms } from "./types";
 

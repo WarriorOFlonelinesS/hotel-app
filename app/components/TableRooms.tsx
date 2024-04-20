@@ -1,5 +1,6 @@
+import React from 'react'
 import {ListOfRooms} from '../components/ListOfRooms'
-import { TRoom, TRooms } from './types'
+import { TRooms } from './types'
 export default function TableRooms({rooms, roomId, freeRooms}:TRooms){
    return (
     <table className="main-table">

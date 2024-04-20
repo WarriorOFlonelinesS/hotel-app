@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { getAccounts } from '../redux/store/selectors';
 import Logo from '../../public/logo.png'
 import Image from 'next/image';
+import React from 'react';
 
 export const Header = () => {
   const router = useRouter();

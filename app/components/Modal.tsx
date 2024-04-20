@@ -1,3 +1,4 @@
+import React from "react";
 import { TModal } from "./types";
 
 export const Modal = ({ showModal, closeModal, children }:TModal) => {
