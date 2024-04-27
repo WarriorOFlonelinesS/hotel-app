@@ -14,14 +14,14 @@ export type TDocument = {
     room: TRoom
 }
 
-export default function RoomPage(params: { params: { id?: string } }){
+export default function RoomPage(params: { params: { id?: string } }) {
     let slug = '';
     if (params.params && typeof params.params.id === 'string') {
-      slug = params.params.id;
+        slug = params.params.id;
     }
     console.log(slug)
     if (!slug) {
-      redirect('/error');
+        redirect('/error');
     }
     const router = useRouter();
     const [data, setData] = useState<React.ReactNode | null>(null)
@@ -51,13 +51,17 @@ export default function RoomPage(params: { params: { id?: string } }){
         setModalVisible(false);
     };
 
+    const handleBack = () => {
+        router.push('/')
+    }
+
     return (
         roomDetails
         &&
         <div className="room">
             <div className="container">
 
-                <button onClick={() => router.push('/')} className="link__btn">
+                <button onClick={handleBack} className="link__btn">
                     <span className="link__img">&lt;</span> Back Home
                 </button>
                 <div className="room-sides">

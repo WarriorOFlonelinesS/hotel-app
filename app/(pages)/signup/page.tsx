@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../../hooks';
@@ -7,20 +7,39 @@ import { getSignUpAccountsRequest } from '../../redux/store/reducers/accountsSli
 import React from 'react';
 
 export default function Signup() {
-  const dispatch = useAppDispatch()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordAgain, setPasswordAgain] = useState('');
-  const [remember, setRemember] = useState(true);
-  const router = useRouter()
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    passwordAgain: '',
+    remember: true,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: newValue,
+    }));
+  };
+
   const signup = () => {
     dispatch(getSignUpAccountsRequest({
-      email: email,
-      password: password,
-      remember:remember
-    }))
-    router.push('/')
+      email: formData.email,
+      password: formData.password,
+      remember: formData.remember,
+    }));
+    router.push('/');
+  };
+
+  const handleSignIn = () => {
+    router.push('/signin')
   }
+
   return (
     <div className='sign-in'>
       <div className='sign-in-content'>
@@ -42,7 +61,7 @@ export default function Signup() {
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
           >
-            <Input onChange={(e) => { setEmail(e.target.value) }} />
+            <Input name="email" onChange={handleInputChange} />
           </Form.Item>
 
           <Form.Item
@@ -50,7 +69,7 @@ export default function Signup() {
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password onChange={(e) => { setPassword(e.target.value) }} />
+            <Input.Password name="password" onChange={handleInputChange} />
           </Form.Item>
 
           <Form.Item
@@ -58,28 +77,26 @@ export default function Signup() {
             name="passwordAgain"
             rules={[{ required: true, message: 'Please input your password again!' }]}
           >
-            <Input.Password onChange={(e) => { setPasswordAgain(e.target.value) }} />
+            <Input.Password name="passwordAgain" onChange={handleInputChange} />
           </Form.Item>
           <Form.Item
             name="remember"
             valuePropName="checked"
             wrapperCol={{ offset: 1, span: 16 }}
           >
-            <Checkbox  onClick={()=>setRemember(!remember)}>Remember me</Checkbox>
+            <Checkbox name="remember" checked={formData.remember} onChange={handleInputChange}>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
-            <Button disabled={password === '' || email === ''} type="primary" htmlType="submit" >
+            <Button disabled={formData.password === '' || formData.email === ''} type="primary" htmlType="submit" >
               Submit
             </Button>
           </Form.Item>
           <p>
-            if you have an account <span className='link' onClick={() => { router.push('/signin') }}>Log in</span>
+            if you have an account <span className='link' onClick={handleSignIn}>Log in</span>
           </p>
         </Form>
       </div>
     </div>
   )
 }
-
-

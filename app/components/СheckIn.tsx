@@ -1,34 +1,26 @@
+'use client'
 import { DatePicker, Input, Form } from "antd";
 import { UserOutlined } from '@ant-design/icons';
-import { useState } from "react";
 import { db } from "../../firebase";
 import React from "react";
 
 export const CheckIn = ({ roomId, room, closeModal }: any) => {
     const [form] = Form.useForm();
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [checkInDate, setCheckInDate] = useState('');
-    const [name, setName] = useState('');
-
-    const onChangeChekInDate = (date: any, dateString: string) => {
-        setCheckInDate(dateString)
+    
+    const handleCancel = () => {
+        closeModal(false);
     };
 
-    const onChangeChekOutDate = (date: any, dateString: string) => {
-        setCheckOutDate(dateString)
-    };
-
-    const onFinish = async () => {
+    const onFinish = async (values: any) => {
         try {
-            const values = await form.validateFields();
             const roomDetails = room[roomId];
             await db.collection('room').doc(roomId).update({
                 [roomId]: {
                     ...roomDetails,
                     isCheckedIn: true,
-                    checkInDate,
-                    checkOutDate,
-                    guest: name
+                    checkInDate: values.checkInDate.format("YYYY-MM-DD"),
+                    checkOutDate: values.checkOutDate.format("YYYY-MM-DD"),
+                    guest: values.guestName
                 }
             });
             closeModal(false);
@@ -49,18 +41,21 @@ export const CheckIn = ({ roomId, room, closeModal }: any) => {
                         className="input__guest"
                         placeholder="Guest's Name"
                         prefix={<UserOutlined className="site-form-item-icon" />}
-                        onChange={(e) => setName(e.target.value)}
                     />
                 </Form.Item>
                 <p>Please, enter the approximate date of guest check in:</p>
-                <DatePicker className="input__date" onChange={onChangeChekInDate} />
+                <Form.Item name="checkInDate">
+                    <DatePicker className="input__date" />
+                </Form.Item>
                 <p>Please, enter the approximate date of guest check out:</p>
-                <DatePicker className="input__date" onChange={onChangeChekOutDate} />
+                <Form.Item name="checkOutDate">
+                    <DatePicker className="input__date" />
+                </Form.Item>
                 <div className="check-in-buttons">
-                    <button className="btn_item check-in__btn_cancel" onClick={() => closeModal(false)}>
+                    <button className="btn_item check-in__btn_cancel" onClick={handleCancel}>
                         Cancel
                     </button>
-                    <button className="btn_item check-in__btn_check-in"  type="submit">
+                    <button className="btn_item check-in__btn_check-in" type="submit">
                         Check in
                     </button>
                 </div>

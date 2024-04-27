@@ -1,24 +1,19 @@
-import React from "react"
+import React from "react";
 
-export const Pagination = ({ roomsPerPage, totalRooms, paginate }: any) => {
-    const pageNumbers = []
-    for (let i = 1; i <= Math.ceil(totalRooms / roomsPerPage); i++) {
-        pageNumbers.push(i)
-    }
+export const Pagination = ({ roomsPerPage, totalRooms, paginate }) => {
+    const pageNumbers = Array.from({ length: Math.ceil(totalRooms / roomsPerPage) }, (_, index) => index + 1);
+
     return (
-    
-            <ul className="pagination-list">
-                {
-                    pageNumbers.map(number => {
-                        return (
-                            <li className="page-item" key={number}>
-                                <button className="btn btn_pagination" onClick={() => paginate(number)}>
-                                    {number}
-                                </button>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-    )
-}
+        <ul className="pagination-list">
+            {pageNumbers.map(number => (
+                <li className="page-item" key={number}>
+                    <button className="btn btn_pagination" onClick={() => paginate(number)}>
+                        {number}
+                    </button>
+                </li>
+            ))}
+        </ul>
+    );
+};
+
+export default Pagination;

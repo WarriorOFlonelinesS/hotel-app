@@ -7,72 +7,75 @@ import { getSignInAccountsRequest } from '../../redux/store/reducers/accountsSli
 import React from 'react';
 
 const SignIn = () => {
-  const dispatch = useAppDispatch()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(true);
-  const router = useRouter()
-  const signIn = async () => {
-    dispatch(getSignInAccountsRequest({
-      email: email,
-      password: password,
-      remember: remember
-    }))
-    router.push('/')
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    remember: true,
+  });
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: name === 'remember' ? checked : value,
+    }));
   };
 
+  const handleSubmit = async () => {
+    const { email, password, remember } = formData;
+    dispatch(getSignInAccountsRequest({ email, password, remember }));
+    router.push('/');
+  };
+
+  const handleSignUp = () =>{
+    router.push('/signup')
+  }
   return (
     <div className='sign-in'>
       <div className='sign-in-content'>
-
         <Form
-          name="basic"
+          name='basic'
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 16 }}
           style={{ width: 600, backgroundColor: 'white' }}
           initialValues={{ remember: true }}
-          autoComplete="off"
-          onSubmitCapture={signIn}
+          autoComplete='off'
+          onFinish={handleSubmit}
         >
-          <h4>
-            Authentication
-          </h4>
+          <h4>Authentication</h4>
           <Form.Item
-            label="Email"
-            name="email"
+            label='Email'
+            name='email'
             rules={[{ required: true, message: 'Please input your email!' }]}
-
           >
-            <Input onChange={(e) => { setEmail(e.target.value) }} />
+            <Input name='email' onChange={handleChange} />
           </Form.Item>
 
           <Form.Item
-            label="Password"
-            name="password"
+            label='Password'
+            name='password'
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password onChange={(e) => { setPassword(e.target.value) }} />
+            <Input.Password name='password' onChange={handleChange} />
           </Form.Item>
 
-          <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ offset: 1, span: 16 }}
-          >
-            <Checkbox onClick={() => setRemember(!remember)}>Remember me</Checkbox>
-
+          <Form.Item name='remember' valuePropName='checked' wrapperCol={{ offset: 1, span: 16 }}>
+            <Checkbox name='remember' onChange={handleChange}>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
-            <Button disabled={password === '' || email === ''} type="primary" htmlType="submit">
+            <Button disabled={formData.password === '' || formData.email === ''} type='primary' htmlType='submit'>
               Submit
             </Button>
           </Form.Item>
-          if you do not have an account <span className='link' onClick={() => { router.push('/signup') }}>Sign up</span>
+
+          <p>If you do not have an account <span className='link' onClick={() => router.push('/signup')}>Sign up</span></p>
         </Form>
       </div>
     </div>
-  )
+  );
 };
 
 export default SignIn;
