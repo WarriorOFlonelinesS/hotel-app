@@ -139,6 +139,8 @@ Email - yar.gorlenko@gmail.com
 
 LinkedIn - [Yaroslav Gorlenko](https://www.linkedin.com/in/yaroslav-gorlenko-a6bb60297/)
 
+Ready project: [HotelHub](https://hotel-app-peach.vercel.app)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [product-screenshot]: images/screenshot.png
