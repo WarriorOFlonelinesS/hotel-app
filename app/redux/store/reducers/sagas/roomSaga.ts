@@ -14,6 +14,7 @@ export function* getRoomsSaga() {
         ...doc.data(),
       }));
       return rooms.sort((a: TRoom, b: TRoom) => a.number - b.number);
+   
     },
   });
 }

@@ -22,19 +22,9 @@ const Home = () => {
 
     const sortedRooms = rooms.map((room: { [x: string]: any; docId: string | number }) => room[room.docId]).sort((a: { number: number }, b: { number: number }) => a.number - b.number);
     const currentRooms = sortedRooms.slice(firstRoomIndex, lastRoomIndex);
-    const roomsId = rooms
-        .filter((room:TRoom) => room.docId !== null)
-        .map((room:TDocument) => room.docId as string)
-        .sort((a:number, b:number) => {
-            const roomA = rooms.find((room:TRoom) => room.docId === a);
-            const roomB = rooms.find((room:TRoom) => room.docId === b);
-            if (roomA && roomB) {
-                return roomA.number - roomB.number;
-            }
-            return 0;
-        })
+    const roomsId = sortedRooms
+        .map((room: TDocument) => room.docId as string)
         .slice(firstRoomIndex, lastRoomIndex);
-
 
     const nextPage = () => {
         setCurrentPage((prev) => (prev === Math.ceil(rooms.length / roomsPerPage) ? 1 : prev + 1));
@@ -44,7 +34,7 @@ const Home = () => {
     const prevPage = () => {
         setCurrentPage((prev) => (prev === 1 ? Math.ceil(rooms.length / roomsPerPage) : prev - 1));
     };
-    
+
     const tableParams = {
         rooms: currentRooms,
         roomId: roomsId,
