@@ -141,8 +141,6 @@ LinkedIn - [Yaroslav Gorlenko](https://www.linkedin.com/in/yaroslav-gorlenko-a6b
 
 Ready project: [HotelHub](https://hotel-app-peach.vercel.app)
 
-Ready 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [product-screenshot]: images/screenshot.png
