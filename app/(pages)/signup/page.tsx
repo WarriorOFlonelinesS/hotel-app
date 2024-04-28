@@ -17,7 +17,7 @@ export default function Signup() {
     remember: true,
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value, checked, type } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
 

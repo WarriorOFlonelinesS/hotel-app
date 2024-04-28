@@ -15,14 +15,14 @@ const SignIn = () => {
   });
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: name === 'remember' ? checked : value,
     }));
   };
-
+  
   const handleSubmit = async () => {
     const { email, password, remember } = formData;
     dispatch(getSignInAccountsRequest({ email, password, remember }));

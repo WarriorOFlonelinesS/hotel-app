@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Pagination = ({ roomsPerPage, totalRooms, paginate }) => {
+export const Pagination = ({ roomsPerPage, totalRooms, paginate }: { roomsPerPage: any, totalRooms: any, paginate: any }) => {
     const pageNumbers = Array.from({ length: Math.ceil(totalRooms / roomsPerPage) }, (_, index) => index + 1);
 
     return (
