@@ -150,3 +150,4 @@ Ready project: [HotelHub](https://hotel-app-vvt9.vercel.app/)
 [TypeScript-url]: https://www.typescriptlang.org/
 [SASS]: https://img.shields.io/badge/sass-20232A?style=for-the-badge&logo=sass
 [SASS-url]: https://sass-lang.com/
+# hotel-hub
